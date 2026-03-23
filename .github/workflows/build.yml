@@ -38,7 +38,7 @@ jobs:
         # 编译生成 dlc.dat
         go run main.go
         # 将编译好的文件重命名并移到根目录
-        mv dlc.dat ../geosite.dat
+        mv dlc.dat ../chenchen.dat
 
     - name: Get current date
       id: date
@@ -50,6 +50,6 @@ jobs:
         tag_name: ${{ env.DATE }}
         name: Update ${{ env.DATE }}
         body: "🤖 由 GitHub Actions 每天自动抓取、合并、清洗并编译的最强去广告 GeoSite 规则。"
-        files: geosite.dat
+        files: chenchen.dat
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
