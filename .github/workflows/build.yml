@@ -37,7 +37,7 @@ jobs:
         cd domain-list-community/data
         # 添加 STUN 拦截规则，防 WebRTC 泄露真实 IP
         # 注意：这里使用单引号，防止 Bash 吃掉正则表达式里的反斜杠
-        echo 'regex:^stun\..*' > my-webrtc
+        echo 'regexp:^stun\..*' > my-webrtc
         # 顺手把常见的关键字也加上，双重保险
         echo 'keyword:stun' >> my-webrtc
         echo "成功生成 my-webrtc 防护规则！"
