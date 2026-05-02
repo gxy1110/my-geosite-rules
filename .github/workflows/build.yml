@@ -57,10 +57,15 @@ jobs:
     - name: Create Release and Upload
       uses: softprops/action-gh-release@v2
       with:
-        tag_name: ${{ env.DATE }}
-        name: Update ${{ env.DATE }}
-        # 更新了 Release 描述，说明现在包含 WebRTC 防护了
-        body: "🤖 由 GitHub Actions 每天自动抓取、合并、清洗并编译的最强去广告及 WebRTC 防泄漏 GeoSite 规则。"
+        # 1. 使用固定标签名，这样下载链接永远不变
+        tag_name: latest
+        # 2. 标题可以保留日期，方便你在网页端查看更新时间
+        name: "最新自动编译版 (更新于 ${{ env.DATE }})"
+        body: "🤖 由 GitHub Actions 每天自动抓取、合并、清洗并编译。包含去广告及 WebRTC 防泄漏规则。"
+        # 3. 核心设置：如果 latest 标签已存在，则更新它而不是报错
+        overwrite: true
+        # 4. 确保将其标记为最新的 Release
+        make_latest: true
         files: chenchen.dat
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
